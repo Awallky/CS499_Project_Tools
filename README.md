@@ -1,3 +1,16 @@
+### modify_annotation_path ###
+A script for modifying annotation .xml file's path label to a new path.
+Useful for when image annotations are created on one machine and then uploaded for use on another.
+Obviously the path will no longer be correct and prevents people from manually entering new paths for every file.
+
+# Commands: 
+           1. You can provide no arguments, where you will be prompted to
+              select the .xml file's directory and the new path string for the files
+           2. You can provide a single command line argument for the new path string
+              and you will be prompted to select the .xml file's directory
+           3. You may provide two arguments where you provide the .xml file's directory
+              and the newly desired path string
+
 ### modify_images ###
 A script with a few different commands for modifying images
 ## Note: make sure to install PIL after your regular python package is installed
