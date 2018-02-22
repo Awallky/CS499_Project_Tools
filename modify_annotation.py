@@ -39,7 +39,8 @@ def replace_file_path(f_name, new_path, label):
             if(label == "name"):
                 path.text = str(new_path)
             else:
-                path.text = str(new_path + "/" + name)
+                name = name[:len(name)-4]
+                path.text = str(new_path + "/" + name + ".jpg")
           tree.write(f_name)
     except:
         print("Error: Unable to extract .xml file contents!!!", f_name)
