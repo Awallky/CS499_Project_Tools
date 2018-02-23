@@ -29,15 +29,20 @@ def replace_file_path(f_name, new_path, label):
     name = name[len(name)-1]
     #print(name, new_path)
 
-
     try:
         with open(f_name, encoding='utf-8') as f:
           tree = ET.parse(f)
           root = tree.getroot()
 
           for path in root.iter(label):
-            if(label == "name"):
-                path.text = str(new_path)
+            print(label)
+            if(label == "filename"):
+                name = name.split("/")
+                name = name[len(name)-1]
+                if(not name.endswith(".jpg")):
+                    name += ".jpg"
+                path.text = str(name)
+                print(path.text)
             else:
                 name = name[:len(name)-4]
                 path.text = str(new_path + "/" + name + ".jpg")
@@ -46,11 +51,14 @@ def replace_file_path(f_name, new_path, label):
         print("Error: Unable to extract .xml file contents!!!", f_name)
         exit(1)
 
+# modify <name> </name>
+# modify <filename>
+
 def main():
     label = ""
 
     if(len(sys.argv) > 1 and sys.argv[1] == "-name"):
-        label = "name"
+        label = "filename"
         if(len(sys.argv) == 4):
             directory = sys.argv[2]
             new_path = sys.argv[3]
